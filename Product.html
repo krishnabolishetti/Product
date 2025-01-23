@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Course Website</title>
+    <style>
+        /* Reset basic styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url(./bg1.png);
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center;
+        }
+
+        /* Top Header (Logo only) */
+        .top-header {
+            display: flex;
+            justify-content: center;
+            padding: 15px;
+            background-image: linear-gradient(to right, rgb(207, 205, 205), white);
+        }
+
+        .logo {
+            width: 220px;
+            height: auto;
+
+        }
+
+        /* Main Content Layout */
+        .main-content {
+            display: flex;
+            padding: 20px;
+            gap: 20px;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: auto;
+            max-width: 200px;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        .sidebar h3 {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        .sidebar ul {
+            margin-top: 60px;
+            list-style: none;
+        }
+
+        .sidebar ul li {
+            margin-top: 40px;
+            margin-bottom: 10px;
+        }
+
+        .sidebar ul li a {
+            margin-top: 40px;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+
+        /* Body Content */
+        .body-content {
+            flex: 1;
+            padding: 20px;
+        }
+
+        /* Secondary Header (Course Filters) */
+        .secondary-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .secondary-header ul {
+            list-style: none;
+            display: flex;
+        }
+
+        .secondary-header ul li {
+            margin-left: 40px;
+        }
+
+        .secondary-header ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+
+        #benefit-button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+
+        /* Courses Display */
+        .course-display {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .course {
+            width: 250px;
+            border: 1px solid #ccc;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .course img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .course h4 {
+            margin-top: 10px;
+            font-size: 18px;
+        }
+
+        /* Benefits Content */
+        .benefit-content {
+            display: none;
+            /* background-color: #f1f1f1; */
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .benefit-content h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin: 10px;
+            letter-spacing: 0.5px;
+        }
+
+        .benefit-content h3 {
+            font-size: 18px;
+            margin-top: 30px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Top Header (Logo) -->
+    <header class="top-header">
+        <img src="./header_2_png-removebg-preview.png" alt="Logo" class="logo">
+    </header>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h3>Categories</h3>
+            <ul>
+                <li><a href="#" onclick="filterCourses('all')">All</a></li>
+                <li><a href="#" onclick="filterCourses('tech')">Tech Zone</a></li>
+                <li><a href="#" onclick="filterCourses('non-tech')">Non-Tech Zone</a></li>
+                <li><a href="#" onclick="filterCourses('core')">Core Zone</a></li>
+            </ul>
+        </aside>
+
+        <!-- Body Content -->
+        <div class="body-content">
+            <!-- Secondary Header -->
+            <header class="secondary-header">
+                <ul>
+                    <li><a href="#" onclick="filterCourses('new')">New</a></li>
+                    <li><a href="#" onclick="filterCourses('bestseller')">Bestseller</a></li>
+                    <li><a href="#" onclick="filterCourses('combopack')">Combos</a></li>
+                    <li><a href="#" onclick="filterCourses('hot')">Hot</a></li>
+                    <li><a href="#" onclick="filterCourses('must-try')">Must Try</a></li>
+                    <li><a href="#" onclick="filterCourses('highly-recommended')">Highly Recommended</a></li>
+                </ul>
+                <button id="benefit-button" onclick="toggleBenefits()">Benefits & Pricing</button>
+            </header>
+
+            <!-- Courses Display -->
+            <div id="course-display" class="course-display">
+                <!-- Dynamic course display will appear here -->
+            </div>
+
+            <!-- Benefits Content -->
+            <div id="benefit-content" class="benefit-content">
+                <h2>Certifications:</h2>
+                <ul>
+                    <li>
+                        <p>Internship Completion Certificate from EdVedha certified by AICTE ISO.</p>
+                    </li>
+                    <li>
+                        <p>Project Completion Certificate from EdVedha.</p>
+                    </li>
+                    <li>
+                        <p>Training Completion Certificate from EdVedha.</p>
+                    </li>
+                    <li>
+                        <p>Certificate for Outstanding Performance from EdVedha.</p>
+                    </li>
+                    <li>
+                        <p>Letter of Recommendation.</p>
+                    </li>
+                </ul>
+                <h3>Pricing Plans:</h3>
+                <ul>
+                    <li>
+                        <p>Self Learn - 5000/-</p>
+                    </li>
+                    <li>
+                        <p>Instructor Led - 8000/-</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sample course data
+        const courses = {
+            all: [
+                { name: "Artificial Intelligence", category: "tech", image: "tech1.jpg" },
+                { name: "Machine Learning", category: "tech", image: "tech2.jpg" },
+                { name: "CyberSecurity", category: "tech", image: "tech1.jpg" },
+                { name: "Devops", category: "tech", image: "tech2.jpg" },
+                { name: "Python", category: "tech", image: "tech1.jpg" },
+                { name: "SalesForce", category: "tech", image: "tech2.jpg" },
+                { name: "Cloud Computing with AWS", category: "tech", image: "tech1.jpg" },
+                { name: "UI/UX Design", category: "tech", image: "tech2.jpg" },
+                { name: "C Programming", category: "tech", image: "tech1.jpg" },
+                { name: "Java", category: "tech", image: "tech2.jpg" },
+                { name: "Web Development", category: "tech", image: "tech1.jpg" },
+                { name: "Data Science", category: "tech", image: "tech2.jpg" },
+                { name: "Digital Marketing", category: "non-tech", image: "business.jpg" },
+                { name: "Human Resources", category: "non-tech", image: "marketing.jpg" },
+                { name: "Finance", category: "non-tech", image: "business.jpg" },
+                { name: "Graphic Design", category: "non-tech", image: "marketing.jpg" },
+                { name: "Embedded Systems", category: "core", image: "core.jpg" },
+                { name: "Internet of things", category: "core", image: "core.jpg" },
+                { name: "VLSI", category: "core", image: "core.jpg" },
+                { name: "Hybrid Electric Vehicle", category: "core", image: "core.jpg" },
+                { name: "AutoCAD", category: "core", image: "core.jpg" },
+                { name: "Micro Biology", category: "core", image: "core.jpg" },
+                { name: "Generative AI", image: "new-tech.jpg" },
+                { name: "Mern stack", image: "new-tech.jpg" },
+                { name: "AutoDesk Revit", image: "new-tech.jpg" },
+            ],
+            tech: [
+                { name: "Artificial Intelligence", image: "tech1.jpg" },
+                { name: "Machine Learning", image: "tech2.jpg" },
+                { name: "CyberSecurity", image: "tech1.jpg" },
+                { name: "Devops", image: "tech2.jpg" },
+                { name: "Python", image: "tech1.jpg" },
+                { name: "SalesForce", image: "tech2.jpg" },
+                { name: "Cloud Computing with AWS", image: "tech1.jpg" },
+                { name: "UI/UX Design", image: "tech2.jpg" },
+                { name: "C Programming", image: "tech1.jpg" },
+                { name: "Java", image: "tech2.jpg" },
+                { name: "Web Development", image: "tech1.jpg" },
+                { name: "Data Science", image: "tech2.jpg" },
+                { name: "Generative AI", image: "new-tech.jpg" },
+                { name: "Mern stack", image: "new-tech.jpg" },
+            ],
+            'non-tech': [
+                { name: "Digital Marketing", image: "business.jpg" },
+                { name: "Human Resources", image: "marketing.jpg" },
+                { name: "Finance", image: "business.jpg" },
+                { name: "Graphic Design", image: "marketing.jpg" },
+            ],
+            core: [
+                { name: "Embedded Systems", image: "core.jpg" },
+                { name: "Internet of things", image: "core.jpg" },
+                { name: "VLSI", image: "core.jpg" },
+                { name: "Hybrid Electric Vehicle", image: "core.jpg" },
+                { name: "AutoCAD", image: "core.jpg" },
+                { name: "Micro Biology", image: "core.jpg" },
+                { name: "AutoDesk Revit", image: "new-tech.jpg" },
+            ],
+            new: [
+                { name: "Generative AI", image: "new-tech.jpg" },
+                { name: "Mern stack", image: "new-tech.jpg" },
+                { name: "AutoDesk Revit", image: "new-tech.jpg" },
+            ],
+            bestseller: [
+                { name: "Data Science", image: "bestseller.jpg" },
+                { name: "CyberSecurity", image: "bestseller.jpg" },
+                { name: "Web Development", image: "bestseller.jpg" },
+                { name: "Digital Marketing", image: "bestseller.jpg" },
+                { name: "VLSI", image: "bestseller.jpg" },
+            ],
+            combopack: [
+                { name: "IT Pack", image: "combopack.jpg" },
+                { name: "Python Pack", image: "bestseller.jpg" },
+                { name: "Skill Boost (Pick any 3)", image: "bestseller.jpg" },
+                { name: "Skill Mastery (Pick any 5)", image: "bestseller.jpg" },
+            ],
+            hot: [
+                { name: "Artificial Intelligence", image: "ai.jpg" },
+                { name: "Machine Learning", image: "ai.jpg" },
+                { name: "Python", image: "bestseller.jpg" },
+                { name: "Finance", image: "bestseller.jpg" },
+                { name: "Internet of things", image: "bestseller.jpg" },
+                { name: "Mern stack", image: "bestseller.jpg" },
+            ],
+            'must-try': [
+                { name: "Devops", image: "data-science.jpg" },
+                { name: "Sales Force", image: "bestseller.jpg" },
+                { name: "Human Resources", image: "bestseller.jpg" },
+                { name: "Embedded System", image: "bestseller.jpg" },
+                { name: "C programming", image: "bestseller.jpg" },
+
+            ],
+            'highly-recommended': [
+                { name: "Cloud Computing with AWS", image: "devops.jpg" },
+                { name: "UI/UX Design", image: "bestseller.jpg" },
+                { name: "Java", image: "bestseller.jpg" },
+                { name: "Hybrid electric vehicle", image: "bestseller.jpg" },
+                { name: "AutoCad", image: "bestseller.jpg" },
+            ],
+        };
+
+        // Function to filter courses based on category
+        function filterCourses(category) {
+            const courseDisplay = document.getElementById('course-display');
+            courseDisplay.innerHTML = ''; // Clear previous courses
+
+            const selectedCourses = courses[category] || [];
+
+            selectedCourses.forEach(course => {
+                const courseDiv = document.createElement('div');
+                courseDiv.classList.add('course');
+                courseDiv.innerHTML = `
+                    <h4>${course.name}</h4>
+                `;
+                courseDisplay.appendChild(courseDiv);
+            });
+        }
+
+        // Function to toggle the benefits section
+        function toggleBenefits() {
+            const benefitContent = document.getElementById('benefit-content');
+            if (benefitContent.style.display === 'block') {
+                benefitContent.style.display = 'none';
+            } else {
+                benefitContent.style.display = 'block';
+            }
+        }
+
+        // Initial load of all courses
+        filterCourses('all');
+    </script>
+
+</body>
+
+</html>
